@@ -1,23 +1,40 @@
 file = File.open("eng_words_lower")
-lines = file.readlines
+word = file.readlines.sample.strip.upcase
 file.close
-wordArr = lines.to_a
-
-
-word = wordArr[rand(wordArr.size)-1].upcase
 found = word.gsub(/./, "_")
-puts word
+max = 0
+puts "1:"+word
+puts "2:"+found
 
-for i in 0..6 do
-  puts found.gsub(/([A-Z_])/, "\\1 ")
+while max < 6
+  count = 0
+  puts found
+  puts "Please enter a Letter (#{max}/6):"
   input = gets.chomp.upcase
+  
+  #check if the input is an letter. Thanks to Julian query
+  unless input =~ /^[a-z]$/i
+    puts "Please enter a letter (a-z, A-Z):"
+    next
+  end
+  #is the input in the word?
   if word.index(input) != nil
-    for i in 0...word.size
-      if word[i].chr == input
-        found[i] = input
+    word.each_char do  |letter|
+      #replace the letter from the input, with the '-' from found 
+      if input == letter
+        found[count] = input
       end
-      puts found
+      count = count +1
     end
+    #if all the letters from found are replaced you have won.
+    if found == word
+      puts "Congratiulations! The word was #{word}"
+      exit
+    end
+  #if the letter isn't in the word, you're one closer to your defeat.
+  else
+    max += 1
   end
 end
 
+puts "Sorry, you lost! The word was #{word}"

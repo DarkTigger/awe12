@@ -1,10 +1,12 @@
+#Author: Klaus Gerken
+#Date: 31.01.2012
+#A little example for a implementetion of the game Hangman in Ruby.
+#Special thanks to Julian
 file = File.open("eng_words_lower")
-word = file.readlines.sample.strip.upcase
+word = file.readlines.sample.reject{|line| line[0]=="#"}.strip.upcase
 file.close
 found = word.gsub(/./, "_")
 max = 0
-puts "1:"+word
-puts "2:"+found
 
 while max < 6
   count = 0

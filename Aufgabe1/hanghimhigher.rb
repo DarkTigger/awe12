@@ -3,7 +3,7 @@
 #A little example for a implementetion of the game Hangman in Ruby.
 #Special thanks to Julian
 file = File.open("eng_words_lower")
-word = file.readlines.sample.reject{|line| line[0]=="#"}.strip.upcase
+word = file.readlines.reject{|line| line[0]=="#"}.sample.strip.upcase
 file.close
 found = word.gsub(/./, "_")
 max = 0

@@ -1,0 +1,7 @@
+Die Tests sollten Folgendes Abprüfen:
+Ist die Eingabe ein Int
+Sollte die Ausgabe ein String sein
+und umgekehrt)
+
+Sollte die Eingabe 4 sein sollte die Ausgabe IV sein
+(und umgekehrt)

@@ -6,12 +6,12 @@ file = File.open("eng_words_lower")
 word = file.readlines.reject{|line| line[0]=="#"}.sample.strip.upcase
 file.close
 found = word.gsub(/./, "_")
-max = 0
+MAX = 0
 
 while max < 6
   count = 0
   puts found
-  puts "Please enter a Letter (#{max}/6):"
+  puts "Please enter a Letter (#{MAX}/6):"
   input = gets.chomp.upcase
   
   #check if the input is an letter. Thanks to Julian query
@@ -35,7 +35,7 @@ while max < 6
     end
   #if the letter isn't in the word, you're one closer to your defeat.
   else
-    max += 1
+    MAX += 1
   end
 end
 
